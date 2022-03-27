@@ -66,7 +66,8 @@ connection.commit()
 # create weapons values
 weapons_list = []
 for i in range(1, weapons_amount + 1):
-    weapons_tuple = (f'Weapon-{i}',
+    weapons_tuple = (
+        f'Weapon-{i}',
         random.randint(int_range[0], int_range[1]),
         random.randint(int_range[0], int_range[1]),
         random.randint(int_range[0], int_range[1]),
@@ -77,7 +78,8 @@ for i in range(1, weapons_amount + 1):
 # create hulls values
 hulls_list = []
 for i in range(1, hulls_amount + 1):
-    hulls_tuple = (f'Hull-{i}',
+    hulls_tuple = (
+        f'Hull-{i}',
         random.randint(int_range[0], int_range[1]),
         random.randint(int_range[0], int_range[1]),
         random.randint(int_range[0], int_range[1]))
@@ -86,7 +88,8 @@ for i in range(1, hulls_amount + 1):
 # create engines values
 engines_list = []
 for i in range(1, engines_amount + 1):
-    engine_tuple = (f'Engine-{i}',
+    engine_tuple = (
+        f'Engine-{i}',
         random.randint(int_range[0], int_range[1]),
         random.randint(int_range[0], int_range[1]))
     engines_list.append(engine_tuple)
@@ -94,7 +97,8 @@ for i in range(1, engines_amount + 1):
 # create ships values
 ships_list = []
 for i in range(1, ships_amount + 1):
-    ships_tuple = (f'Ship-{i}',
+    ships_tuple = (
+        f'Ship-{i}',
         f'Weapon-{random.randint(1, weapons_amount)}',
         f'Hull-{random.randint(1, hulls_amount)}',
         f'Engine-{random.randint(1, engines_amount)}')
