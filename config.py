@@ -1,4 +1,4 @@
-ships_amount = 30
+ships_amount = 200
 weapons_amount = 20
 hulls_amount = 5
 engines_amount = 6
