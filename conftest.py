@@ -7,6 +7,20 @@ import config
 
 int_range = config.int_range
 
+def randomize_component(components, columns_number):
+    new_components = []
+    for component_tuple in components:
+        component_list = []
+        random_parameter_number = random.randint(1, columns_number - 1)
+        for i in range(len(component_tuple)):
+            element = component_tuple[i]
+            if i == random_parameter_number:
+                while element == component_tuple[i]: # do while random element will not differ from initial value 
+                    element = random.randint(int_range[0], int_range[1])
+            component_list.append(element)
+        new_components.append(component_list)
+    return new_components
+
 @pytest.fixture(scope='session')
 def create_new_db():
     ### initialize
@@ -50,47 +64,16 @@ def create_new_db():
                     while element == ship_tuple[i]: # do while random element will not differ from initial value 
                         element = random.choice(DICT[i])[0]
                 ship_list.append(element)
-
             new_ships.append(ship_list)
 
         # weapons
-        new_weapons = []
-        for weapon_tuple in weapons:
-            weapon_list = []
-            random_parameter_number = random.randint(1, 5)
-            for i in range(len(weapon_tuple)):
-                element = weapon_tuple[i]
-                if i == random_parameter_number:
-                    while element == weapon_tuple[i]: # do while random element will not differ from initial value 
-                        element = random.randint(int_range[0], int_range[1])
-                weapon_list.append(element)
-            new_weapons.append(weapon_list)
+        new_weapons = randomize_component(weapons, 6)
 
         # hulls
-        new_hulls = []
-        for hull_tuple in hulls:
-            hull_list = []
-            random_parameter_number = random.randint(1, 3)
-            for i in range(len(hull_tuple)):
-                element = hull_tuple[i]
-                if i == random_parameter_number:
-                    while element == hull_tuple[i]: # do while random element will not differ from initial value 
-                        element = random.randint(int_range[0], int_range[1])
-                hull_list.append(element)
-            new_hulls.append(hull_list)
+        new_hulls = randomize_component(hulls, 4)
 
         # engines
-        new_engines = []
-        for engine_tuple in engines:
-            engine_list = []
-            random_parameter_number = random.randint(1, 2)
-            for i in range(len(engine_tuple)):
-                element = engine_tuple[i]
-                if i == random_parameter_number:
-                    while element == engine_tuple[i]: # do while random element will not differ from initial value 
-                        element = random.randint(int_range[0], int_range[1])
-                engine_list.append(element)
-            new_engines.append(engine_list)
+        new_engines = randomize_component(engines, 3)
 
     ### create new db
     with allure.step('Create new database'):
